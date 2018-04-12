@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" 
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jee="http://www.springframework.org/schema/jee" 
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:cache="http://www.springframework.org/schema/cache"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.1.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+			http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd" >
+	
+	<!--日志定时服务 start -->
+	<bean id="logJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="logSchedulerService" />
+		<property name="targetMethod" value="cleanBusinessLog" />
+	</bean>		
+	
+	<!-- 凌晨1点  ： 0 0 1 * * ? -->
+	<bean id="logTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="logJob" />
+		<property name="cronExpression" value="0 0 1 * * ? *" />
+	</bean>
+	<!-- 日志定时服务 end -->
+
+	<!-- 同步分店员工数据定时服务 start -->
+	<bean id="syncUserJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="su27SchedulerService" />
+		<property name="targetMethod" value="syncUser" />
+	</bean>		
+	
+	<!--  每天 00点 和 12点 执行一次 (0 0 00,12 * * ?) -->
+	<bean id="syncUserTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="syncUserJob" />
+		<property name="cronExpression" value="0 0 0,12 * * ? *" />
+	</bean>
+	<!-- 同步分店员工数据定时服务 end -->
+
+	<!-- 	门店同步定时服务   start -->
+	<bean id="storeJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="storeSchedulerService" />
+		<property name="targetMethod" value="syncStores" />
+	</bean>
+
+	<!-- 每天凌晨一点同步  ： 0 0 1 * * ? -->
+	<bean id="storeTrigger"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="storeJob" />
+		<property name="cronExpression" value="0 0 1 * * ? *" />
+	</bean>
+	<!-- 	门店同步定时服务   end -->
+	
+	<!-- 	所属组织定时更新服务   start -->
+	<bean id="userBelongOrgHandleJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="userBelongOrgScheduler" />
+		<property name="targetMethod" value="handle" />
+	</bean>
+
+	<!--  每天 00点 和 12点 执行一次 (0 0 00,12 * * ?) -->
+	<bean id="userBelongOrgHandleTrigger"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="userBelongOrgHandleJob" />
+		<property name="cronExpression" value="0 0 0,12 * * ? *" />
+	</bean>
+	<!-- 	所属组织定时更新服务 end -->	
+
+	<!-- 	更新组织视图定时更新服务 start -->
+	<bean id="userOrgViewSchedulerJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="userOrgViewScheduler" />
+		<property name="targetMethod" value="updateUserOrgView" />
+	</bean>
+
+	<!--  每2个小时 执行一次 -->
+	<bean id="updateUserOrgViewTrigger"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="userOrgViewSchedulerJob" />
+		<property name="cronExpression" value="0 0 0/2 * * ? *" />
+	</bean>
+	<!-- 	更新组织视图定时更新服务 end -->	
+
+	<!-- 	同步hr系统组织架构定时更新服务 start -->
+	<bean id="hrSystemSyncPlatenoOrgArchitectureJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="hrSystemScheduler" />
+		<property name="targetMethod" value="syncPlatenoOrgArchitecture" />
+	</bean>
+
+	<!--  每天凌晨2时 执行一次 -->
+	<bean id="hrSystemSyncPlatenoOrgArchitectureTrigger"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="hrSystemSyncPlatenoOrgArchitectureJob" />
+		<property name="cronExpression" value="0 0 2 * * ? *" />
+	</bean>
+	<!-- 	定时更新服务 end -->	
+
+	<!-- 	定时更新服务 start -->
+	<bean id="hrSystemSyncPlatenoUserJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="hrSystemScheduler" />
+		<property name="targetMethod" value="syncPlatenoUser" />
+	</bean>
+
+	<!--  每隔12个小时 执行一次 -->
+	<bean id="hrSystemSyncPlatenoUserTrigger"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="hrSystemSyncPlatenoUserJob" />
+		<property name="cronExpression" value="0 0 0/12 * * ? *" />
+	</bean>
+	<!-- 	定时更新服务 end -->	
+
+	<!-- 同步铂涛销售人员定时服务 start -->
+	<bean id="syncSaleJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="saleSchedulerService" />
+		<property name="targetMethod" value="syncPlatenoSaleInfo" />
+	</bean>		
+	
+	<!-- 凌晨3点  ： 0 0 3 * * ? -->
+	<bean id="syncSaleTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="syncSaleJob" />
+		<property name="cronExpression" value="0 0 3,11 * * ? *" />
+	</bean>
+	<!-- 同步铂涛销售人员定时服务 end -->
+
+
+	<!-- 同步hr系统岗位数据定时服务 start -->
+	<bean id="syncPlatenoJob_Job" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="hrSystemScheduler" />
+		<property name="targetMethod" value="syncPlatenoJob" />
+	</bean>		
+	
+	<!-- 每个星期日12点同步一次 -->
+	<bean id="syncPlatenoJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="syncPlatenoJob_Job" />
+		<property name="cronExpression" value="0 0 12 ? * 1 *" />
+	</bean>
+	<!-- 同步hr系统岗位数据定时服务 end -->
+
+	<!--  -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- 日志 -->
+				<ref bean="logTrigger"/>
+				<!-- 	门店同步定时服务  -->
+				<ref bean="storeTrigger" />
+				<!-- 	同步(铂涛)分店员工数据定时服务  -->
+				<ref bean="syncUserTrigger" />	
+				<!-- 	同步铂涛销售人员定时服务  -->
+				<ref bean="syncSaleTrigger" />						
+				<!-- 同步hr系统组织架构 -->
+				<ref bean="hrSystemSyncPlatenoOrgArchitectureTrigger" />	
+				<!-- 同步hr系统铂涛用户 -->
+				<ref bean="hrSystemSyncPlatenoUserTrigger" />										
+				<ref bean="userBelongOrgHandleTrigger" />		
+				<ref bean="updateUserOrgViewTrigger" />			
+				<ref bean="syncPlatenoJobTrigger" />
+			</list>
+		</property>
+		<property name="autoStartup" value="true" />
+	</bean>		
+	
+</beans>

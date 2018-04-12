@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	" default-lazy-init="true">
+
+	<!-- 目标任务对象 -->
+	<bean id="taskBean" class="com.hua.task.QuartzTaskBean" />
+
+	<!-- simple job detail -->
+	<bean id="complexJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.hua.task.QuartzTaskBean" />
+		<property name="jobDataMap">
+			<map>
+				<entry key="taskKey" value="taskBeanValue" />
+			</map>
+		</property>
+		
+		<property name="durability" value="true" />
+	</bean>
+
+	<!-- 简单触发器，不支持 cron表达式 -->
+	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="complexJobDetail" />
+		<!-- 开始时间 -->
+		<!-- <property name="startTime" value="" /> -->
+		<!-- 启动后延迟 毫秒数)-->
+		<property name="startDelay" value="1000" />
+		<!-- 重复间隔 毫秒数 -->
+		<property name="repeatInterval" value="2000" />
+		<!-- 重复次数 -->
+		<property name="repeatCount" value="3" />
+	</bean>
+
+	<!-- 复杂触发器，支持 cron表达式 -->
+		<bean id="complexTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="complexJobDetail" />
+		<!-- 启动后延迟 毫秒数)-->
+		<property name="startDelay" value="1000" />
+		<property name="cronExpression" value="5 38 12 * * ?" />
+	</bean>
+
+	<!-- 构造任务调度bean -->
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<!-- job 集合 -->
+		<property name="jobDetails">
+			<list>
+				<ref bean="complexJobDetail" />
+			</list>
+		</property>
+		<!-- 触发器集合 -->
+		<property name="triggers">
+			<list>
+				<ref bean="simpleTrigger" />
+				<ref bean="complexTrigger" />
+			</list>
+		</property>	
+	</bean>	
+
+
+</beans>
