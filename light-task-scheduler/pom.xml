@@ -1,19 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>com.hua</groupId>
 		<artifactId>task-entire</artifactId>
 		<version>0.0.1</version>
 	</parent>	
-	<artifactId>task-spring</artifactId>
+	<artifactId>light-task-scheduler</artifactId>
 	<packaging>jar</packaging>
-	<name>task-spring</name>
+	<name>light-task-scheduler</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
 		<task.version>0.0.1</task.version>
-		
 	</properties>
 
 	<dependencies>
@@ -70,8 +70,21 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring.version}</version>
-		</dependency>		
+		</dependency>	
+
+		<dependency>
+		    <groupId>com.github.ltsopensource</groupId>
+		    <artifactId>lts-core</artifactId>
+		    <version>${lts.version}</version>
+		</dependency>
+
+<!-- 		<dependency>
+		    <groupId>>com.github.sgroschupf</groupId>
+		    <artifactId>zkclient</artifactId>
+		    <version>0.1</version>
+		</dependency>	 -->
 		
+			
 	</dependencies>
 
 </project>
