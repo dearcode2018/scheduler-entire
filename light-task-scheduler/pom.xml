@@ -15,7 +15,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<task.version>0.0.1</task.version>
-<!-- 		<jdk.version>1.6</jdk.version>		 -->
+		<jackson.version>2.9.8</jackson.version>
+		<fastjson>1.2.56</fastjson>
+		<netty.version>4.1.33.Final</netty.version>
+		<zookeeper.version>3.4.5</zookeeper.version>
+		<leveldbjni.version>1.8</leveldbjni.version>
+		<zkclient.version>0.1</zkclient.version>
 	</properties>
 
 	<dependencies>
@@ -78,12 +83,6 @@
 			<groupId>com.github.ltsopensource</groupId>
 			<artifactId>lts-core</artifactId>
 			<version>${lts.version}</version>
-			<exclusions>
-				<exclusion>
-				  <groupId>org.javassist</groupId>
-				  <artifactId>javassist</artifactId>					
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -97,7 +96,6 @@
 			<artifactId>lts-jobtracker</artifactId>
 			<version>${lts.version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>com.github.ltsopensource</groupId>
@@ -114,37 +112,37 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.9.8</version>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.8</version>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.56</version>
+			<version>${fastjson}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
-			<version>4.1.33.Final</version>
+			<version>${netty.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.github.sgroschupf</groupId>
 			<artifactId>zkclient</artifactId>
-			<version>0.1</version>
+			<version>${zkclient.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
 			<artifactId>zookeeper</artifactId>
-			<version>3.4.5</version>
+			<version>${zookeeper.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.jboss.netty</groupId>
@@ -166,20 +164,13 @@
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-log4j12</artifactId>
 				</exclusion>
-
 			</exclusions>
 		</dependency>
 
 	<dependency>
-	  <groupId>org.javassist</groupId>
-	  <artifactId>javassist</artifactId>	
-	  <version>3.24.1-GA</version>
-	</dependency>
-
-	<dependency>
 	    <groupId>org.fusesource.leveldbjni</groupId>
 	    <artifactId>leveldbjni-all</artifactId>
-	    <version>1.8</version>
+	    <version>${leveldbjni.version}</version>
 	</dependency>
 	
 	</dependencies>

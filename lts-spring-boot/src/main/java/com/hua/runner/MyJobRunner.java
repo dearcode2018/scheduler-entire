@@ -4,7 +4,7 @@
   * @version 1.0
   * @author qianye.zheng
  */
-package com.hua.job;
+package com.hua.runner;
 
 import com.github.ltsopensource.core.domain.Action;
 import com.github.ltsopensource.tasktracker.Result;

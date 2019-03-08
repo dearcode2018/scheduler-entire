@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * LightTaskTest.java
+ * SpringBootJunit5Test.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.task;
+package template.code;
 
 //静态导入
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -27,33 +27,30 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.github.ltsopensource.core.domain.Job;
-import com.github.ltsopensource.jobclient.JobClient;
-import com.github.ltsopensource.jobclient.domain.Response;
-import com.github.ltsopensource.tasktracker.TaskTracker;
-import com.hua.runner.MyJobRunner;
-//import com.github.ltsopensource.tasktracker.TaskTracker;
-//import com.hua.runner.MyJobRunner;
+import com.hua.ApplicationStarter;
 import com.hua.test.BaseTest;
+
 
 /**
  * 描述: 
  * 
  * @author qye.zheng
- * LightTaskTest
+ * SpringBootJunit5Test
  */
 //@DisplayName("测试类名称")
 //@Tag("测试类标签")
 //@Tags({@Tag("测试类标签1"), @Tag("测试类标签2")})
 // for Junit 5.x
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = {
-		"classpath:conf/spring-scheduler.xml"
-		})
-public final class LightTaskTest extends BaseTest {
+//@WebAppConfiguration(value = "src/main/webapp")
+@SpringBootTest(classes = {ApplicationStarter.class}, 
+webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+//@MapperScan(basePackages = {"com.hua.mapper"})
+public final class SpringBootJunit5Test extends BaseTest {
 
 	
 	/*
@@ -93,144 +90,6 @@ public final class LightTaskTest extends BaseTest {
 	 * 
 	 */
 	
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	//@DisplayName("test")
-	@Test
-	public void testScheduler() {
-		try {
-			
-			
-		} catch (Exception e) {
-			log.error("testScheduler =====> ", e);
-		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	//@DisplayName("test")
-	@Test
-	public void testJobClient() {
-		try {
-			// 工作客户端
-			JobClient jobClient = new JobClient();
-			jobClient.setNodeGroup("test_jobClient");
-			jobClient.setClusterName(CLUSTER_NAME);
-			jobClient.setRegistryAddress(ZOOKEEPER_URL);
-			jobClient.start();
-			
-			// 任务
-			Job job = new Job();
-			job.setTaskId("38ki3kddk");
-			job.setParam("name", "zhangsan");
-			job.setTaskTrackerNodeGroup("test_taskTracker");
-			// Cron 表达式
-			job.setCronExpression("10 * * * * ?");
-			// 指定时间执行
-			//job.setTriggerDate(new Date());
-			
-			
-			// 提交任务
-			Response response = jobClient.submitJob(job);
-			
-			// {"code":"11","msg":"Can not found JobTracker node!","success":false}
-			System.out.println(response.toString());
-			
-			
-			
-		} catch (Exception e) {
-			log.error("testJobClient =====> ", e);
-		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	//@DisplayName("test")
-	@Test
-	public void testTaskTracker() {
-		try {
-			TaskTracker taskTracker = new TaskTracker();
-			taskTracker.setJobRunnerClass(MyJobRunner.class);
-			taskTracker.setRegistryAddress(ZOOKEEPER_URL);
-			taskTracker.setNodeGroup("test_trade_TaskTracker");
-			taskTracker.setClusterName(CLUSTER_NAME);
-			taskTracker.setWorkThreads(20);
-			taskTracker.start();
-			
-		} catch (Exception e) {
-			log.error("testTaskTracker =====> ", e);
-		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	//@DisplayName("test")
-	@Test
-	public void testTask() {
-		try {
-			// 工作客户端
-			JobClient jobClient = new JobClient();
-			// 提交节点组
-			jobClient.setNodeGroup("test_jobClient");
-			jobClient.setClusterName(CLUSTER_NAME);
-			jobClient.setRegistryAddress(ZOOKEEPER_URL);
-			jobClient.start();
-			
-			// 任务: 确定任务多大执行时间/参数等
-			Job job = new Job();
-			job.setTaskId("38ki3kddk");
-			job.setParam("name", "zhangsan");
-			// (任务)执行节点组
-			job.setTaskTrackerNodeGroup("test_taskTracker");
-			// Cron 表达式
-			job.setCronExpression("10 * * * * ?");
-			// 指定时间执行
-			//job.setTriggerDate(new Date());
-			
-			// 提交任务
-			Response response = jobClient.submitJob(job);
-			
-			// {"code":"11","msg":"Can not found JobTracker node!","success":false}
-			System.out.println(response.toString());
-			
-			// 任务的追踪者
-			TaskTracker taskTracker = new TaskTracker();
-			taskTracker.setJobRunnerClass(MyJobRunner.class);
-			taskTracker.setRegistryAddress(ZOOKEEPER_URL);
-			taskTracker.setNodeGroup("test_taskTracker");
-			// (任务)执行节点组
-			taskTracker.setClusterName(CLUSTER_NAME);
-			taskTracker.setWorkThreads(20);
-			taskTracker.start();			
-			
-			
-			
-			// 不让主线程提前结束
-			Thread.sleep(1000 * 1000);
-			
-			
-		} catch (Exception e) {
-			log.error("testTask =====> ", e);
-		}
-	}
-		
 	
 	
 	/**
