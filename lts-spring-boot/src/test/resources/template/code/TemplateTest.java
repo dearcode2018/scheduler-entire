@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * TaskTest.java
+ * TemplateTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.task;
+package template.code;
 
 // 静态导入
 import static org.junit.Assert.assertArrayEquals;
@@ -27,12 +27,12 @@ import com.hua.test.BaseTest;
 
 
 /**
- * 描述: 任务调度 - 测试
+ * 描述: 
  * 
  * @author qye.zheng
- * TaskTest
+ * TemplateTest
  */
-public final class TaskTest extends BaseTest {
+public final class TemplateTest extends BaseTest {
 
 	/**
 	 * 
@@ -47,22 +47,6 @@ public final class TaskTest extends BaseTest {
 			
 		} catch (Exception e) {
 			log.error("test =====> ", e);
-		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	@Test
-	public void testTask() {
-		try {
-			
-			
-		} catch (Exception e) {
-			log.error("testTask =====> ", e);
 		}
 	}
 	
