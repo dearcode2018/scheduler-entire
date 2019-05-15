@@ -34,7 +34,7 @@ import com.github.ltsopensource.core.domain.Job;
 import com.github.ltsopensource.jobclient.JobClient;
 import com.github.ltsopensource.jobclient.domain.Response;
 import com.github.ltsopensource.tasktracker.TaskTracker;
-import com.hua.runner.MyJobRunner;
+import com.hua.job.MyJobRunner;
 //import com.github.ltsopensource.tasktracker.TaskTracker;
 //import com.hua.runner.MyJobRunner;
 import com.hua.test.BaseTest;

@@ -32,18 +32,19 @@ lts:
   # 任务追踪器  
   tasktracker: 
     # 集群名称，对应远程JobTracker服务的配置 (jobtracker.cfg)
-    cluster-name: SCHEDULER_CLUSTER
+    cluster-name: test_cluster
     # 项目名称 (执行节点组名称)
     node-group: lts-spring-boot
     # 提交节点集群名称
     registry-address: zookeeper://192.168.5.11:2181
+    
     # 工作线程数
     work-threads: 20
     configs:
       # 失败存储方式
       job.fail.store: mapdb
     # 运行转发器
-    job-runner-class: com.hua.runner.JobRunnerDispatcher
+    job-runner-class: com.hua.dispatcher.JobRunnerDispatcher
 
 
 
