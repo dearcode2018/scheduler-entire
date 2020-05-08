@@ -19,6 +19,7 @@
 		<module>task-spring</module>	
 		<module>light-task-scheduler</module>
 		<module>lts-spring-boot</module>
+		<module>timer</module>
 	</modules>
  
 	<!-- 公共属性 -->

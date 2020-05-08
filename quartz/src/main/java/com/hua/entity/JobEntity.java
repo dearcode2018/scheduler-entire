@@ -12,8 +12,6 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.impl.calendar.AnnualCalendar;
 
-import com.hua.entity.BaseEntity;
-
 /**
  * 描述: Job实体，实现 org.quartz.Job 接口
  * @author qye.zheng

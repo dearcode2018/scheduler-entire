@@ -34,7 +34,6 @@ import com.github.ltsopensource.core.domain.Job;
 import com.github.ltsopensource.jobclient.JobClient;
 import com.github.ltsopensource.jobclient.domain.Response;
 import com.github.ltsopensource.tasktracker.TaskTracker;
-import com.hua.job.MyJobRunner;
 //import com.github.ltsopensource.tasktracker.TaskTracker;
 //import com.hua.runner.MyJobRunner;
 import com.hua.test.BaseTest;
@@ -163,7 +162,7 @@ public final class LightTaskTest extends BaseTest {
 	public void testTaskTracker() {
 		try {
 			TaskTracker taskTracker = new TaskTracker();
-			taskTracker.setJobRunnerClass(MyJobRunner.class);
+			//taskTracker.setJobRunnerClass(MyJobRunner.class);
 			taskTracker.setRegistryAddress(ZOOKEEPER_URL);
 			taskTracker.setNodeGroup("test_trade_TaskTracker");
 			taskTracker.setClusterName(CLUSTER_NAME);
@@ -212,7 +211,7 @@ public final class LightTaskTest extends BaseTest {
 			
 			// 任务的追踪者
 			TaskTracker taskTracker = new TaskTracker();
-			taskTracker.setJobRunnerClass(MyJobRunner.class);
+			//taskTracker.setJobRunnerClass(MyJobRunner.class);
 			taskTracker.setRegistryAddress(ZOOKEEPER_URL);
 			taskTracker.setNodeGroup("test_taskTracker");
 			// (任务)执行节点组
