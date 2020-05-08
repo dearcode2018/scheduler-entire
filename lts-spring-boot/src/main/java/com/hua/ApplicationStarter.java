@@ -9,10 +9,6 @@ package com.hua;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.github.ltsopensource.spring.boot.annotation.EnableJobTracker;
-import com.github.ltsopensource.spring.boot.annotation.EnableMonitor;
-import com.github.ltsopensource.spring.boot.annotation.EnableTaskTracker;
-
  /**
  * @type ApplicationStarter
  * @description 应用启动器
@@ -26,7 +22,7 @@ import com.github.ltsopensource.spring.boot.annotation.EnableTaskTracker;
 @SpringBootApplication
 //@EnableJobClient
 //@EnableJobTracker
-@EnableTaskTracker
+//@EnableTaskTracker
 //@EnableMonitor
 /* 启动指定特性 */
 //@Configuration

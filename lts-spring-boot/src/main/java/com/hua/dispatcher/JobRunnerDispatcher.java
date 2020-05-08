@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.BeansException;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -26,6 +27,7 @@ import com.hua.util.EmptyUtil;
  * @description 
  * @author qianye.zheng
  */
+@ConditionalOnProperty(name = {"scheduler.lts.switch"}, havingValue = "true")
 @JobRunner4TaskTracker
 public class JobRunnerDispatcher implements JobRunner, ApplicationContextAware
 {
