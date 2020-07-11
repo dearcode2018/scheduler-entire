@@ -28,6 +28,11 @@ import com.hua.log.BaseLog;
 public class BaseTest extends BaseLog {
 	
 	
+	protected String ZOOKEEPER_URL = "zookeeper://192.168.5.11:2181";
+	
+	protected String CLUSTER_NAME = "test_cluster";
+	
+	
 	/**
 	 * 
 	 * 描述: [所有测试]开始之前运行
