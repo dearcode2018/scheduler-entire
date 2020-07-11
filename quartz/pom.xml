@@ -16,7 +16,8 @@
 		<task.version>0.0.1</task.version>		
 		
 		<!-- 任务调度 -->
-		<quartz.version>2.2.1</quartz.version>					
+		<quartz.version>2.3.2</quartz.version>
+		<quartz.commonJ.version>2.1.7</quartz.commonJ.version>
 	</properties>
 
 	<dependencies>
@@ -32,6 +33,12 @@
 			<artifactId>quartz</artifactId>
 			<version>${quartz.version}</version>
 		</dependency>		
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
 	
 	</dependencies>
 

@@ -1,6 +1,6 @@
 /**
  * 描述: 
- * TemplateTest.java
+ * QuartzTest.java
  * 
  * @author qye.zheng
  *  version 1.0
@@ -30,7 +30,7 @@ import com.hua.test.BaseTest;
  * 描述: 
  * 
  * @author qye.zheng
- * TemplateTest
+ * QuartzTest
  */
 public final class TemplateTest extends BaseTest {
 
