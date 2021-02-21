@@ -14,14 +14,14 @@
 	<packaging>jar</packaging>
 	<name>quartz-spring-boot</name>
 	<properties>
-		<task-core.version>1.0.0</task-core.version>
+		<scheduler-core.version>1.0.0</scheduler-core.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.hua</groupId>
-			<artifactId>task-core</artifactId>
-			<version>${task-core.version}</version>
+			<artifactId>scheduler-core</artifactId>
+			<version>${scheduler-core.version}</version>
 		</dependency>
 
 		<!-- 任务调度 -->

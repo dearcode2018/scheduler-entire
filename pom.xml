@@ -3,21 +3,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.hua</groupId>
-	<artifactId>task-entire</artifactId>
+	<artifactId>scheduler-entire</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
-	<name>task-entire</name>
+	<name>scheduler-entire</name>
 	<description>task Maven Entire Project</description>
 	
 	<!-- 模块-子项目 -->
 	<modules>
 		<!-- 模板 -->
-		<module>task-template</module>
+		<module>scheduler-template</module>
 		<module>cron-expression</module>
 		<module>quartz</module>
 		<module>quartz-spring</module>
 		<module>quartz-spring-boot</module>
-		<module>task-core</module>
+		<module>scheduler-core</module>
 		<module>light-task-scheduler</module>
 		<module>lts-spring-boot</module>
 		<module>timer</module>
@@ -39,7 +39,7 @@
 		<spring.version>5.1.5.RELEASE</spring.version>
 		<lts.version>1.7.0</lts.version>
 		<common.version>1.0.0</common.version>
-		<task-core.version>1.0.0</task-core.version>
+		<scheduler-core.version>1.0.0</scheduler-core.version>
 		<jackson.version>2.9.8</jackson.version>
 		<fastjson>1.2.56</fastjson>
 		<netty.version>4.1.33.Final</netty.version>
@@ -61,8 +61,8 @@
 
 			<dependency>
 				<groupId>com.hua</groupId>
-				<artifactId>task-core</artifactId>
-				<version>${task-core.version}</version>
+				<artifactId>scheduler-core</artifactId>
+				<version>${scheduler-core.version}</version>
 			</dependency>
 
 			<!-- spring -->

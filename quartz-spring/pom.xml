@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.hua</groupId>
-		<artifactId>task-entire</artifactId>
+		<artifactId>scheduler-entire</artifactId>
 		<version>1.0.0</version>
 	</parent>	
 
@@ -18,7 +18,7 @@
 	
 		<dependency>
 			<groupId>com.hua</groupId>
-			<artifactId>task-core</artifactId>
+			<artifactId>scheduler-core</artifactId>
 		</dependency>
 
 		<!-- 任务调度 -->

@@ -36,7 +36,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.hua</groupId>
-			<artifactId>task-core</artifactId>
+			<artifactId>scheduler-core</artifactId>
 			<version>${task.version}</version>
 		</dependency>
 
