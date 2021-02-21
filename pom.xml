@@ -1,32 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.hua</groupId>
-  <artifactId>task-entire</artifactId>
-  <version>0.0.1</version>
-  <packaging>pom</packaging>
-  <name>task-entire</name>
-  <description>task Maven Entire Project</description>
-  
-  	<!-- 模块-子项目 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hua</groupId>
+	<artifactId>task-entire</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<name>task-entire</name>
+	<description>task Maven Entire Project</description>
+	
+	<!-- 模块-子项目 -->
 	<modules>
 		<!-- 模板 -->
-		<module>task-template</module>		
-		<module>cron-expression</module>		
-		<module>quartz</module>		
-		<module>quartz-spring</module>		
-		<module>quartz2</module>		
-		<module>task</module>		
-		<module>task-spring</module>	
+		<module>task-template</module>
+		<module>cron-expression</module>
+		<module>quartz</module>
+		<module>quartz-spring</module>
+		<module>quartz-spring-boot</module>
+		<module>task-core</module>
 		<module>light-task-scheduler</module>
 		<module>lts-spring-boot</module>
 		<module>timer</module>
 	</modules>
- 
+
 	<!-- 公共属性 -->
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.version>0.0.1</maven.version>
+		<maven.version>1.0.0</maven.version>
 		<maven.plugin.compiler.version>3.3</maven.plugin.compiler.version>
 		<maven.plugin.source.version>2.4</maven.plugin.source.version>
 		<maven.plugin.surefire.version>2.18.1</maven.plugin.surefire.version>
@@ -36,11 +37,195 @@
 		<maven.plugin.war.version>3.0</maven.plugin.war.version>
 		<!-- spring -->
 		<spring.version>5.1.5.RELEASE</spring.version>
-		<lts.version>1.7.0</lts.version>	
-	</properties>  
-  
-  
- 	<!-- 公共构建 -->
+		<lts.version>1.7.0</lts.version>
+		<common.version>1.0.0</common.version>
+		<task-core.version>1.0.0</task-core.version>
+		<jackson.version>2.9.8</jackson.version>
+		<fastjson>1.2.56</fastjson>
+		<netty.version>4.1.33.Final</netty.version>
+		<zookeeper.version>3.4.5</zookeeper.version>
+		<leveldbjni.version>1.8</leveldbjni.version>
+		<zkclient.version>0.1</zkclient.version>
+		<!-- 任务调度 -->
+		<quartz.version>2.3.2</quartz.version>
+		<quartz.commonJ.version>2.1.7</quartz.commonJ.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.hua</groupId>
+				<artifactId>common</artifactId>
+				<version>${common.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hua</groupId>
+				<artifactId>task-core</artifactId>
+				<version>${task-core.version}</version>
+			</dependency>
+
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.ltsopensource</groupId>
+				<artifactId>lts-core</artifactId>
+				<version>${lts.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.ltsopensource</groupId>
+				<artifactId>lts-jobclient</artifactId>
+				<version>${lts.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.ltsopensource</groupId>
+				<artifactId>lts-jobtracker</artifactId>
+				<version>${lts.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.ltsopensource</groupId>
+				<artifactId>lts-tasktracker</artifactId>
+				<version>${lts.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.ltsopensource</groupId>
+				<artifactId>lts-spring</artifactId>
+				<version>${lts.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.jboss.netty</groupId>
+						<artifactId>netty</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>junit</groupId>
+						<artifactId>junit</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.fusesource.leveldbjni</groupId>
+				<artifactId>leveldbjni-all</artifactId>
+				<version>${leveldbjni.version}</version>
+			</dependency>
+
+			<!-- 任务调度 -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz-jobs</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+
+	<!-- 公共构建 -->
 	<build>
 		<plugins>
 
@@ -130,15 +315,23 @@
 				</configuration>
 			</plugin>
 
-			<!-- 解决 web项目pom.xml报错 -->
+			<!-- 要将源码放上去，需要加入这个插件 -->
 			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
+				<artifactId>maven-source-plugin</artifactId>
 				<configuration>
-					<version>${maven.plugin.war.version}</version>
+					<attach>true</attach>
 				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
 	</build>
-	
+
 </project>

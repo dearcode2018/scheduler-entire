@@ -4,31 +4,73 @@
 	<parent>
 		<groupId>com.hua</groupId>
 		<artifactId>task-entire</artifactId>
-		<version>0.0.1</version>
+		<version>1.0.0</version>
 	</parent>	
 
 	<artifactId>quartz-spring</artifactId>
 	<packaging>jar</packaging>
 	<name>quartz-spring</name>
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
-		<com.hua.quartz.version>0.0.1</com.hua.quartz.version>	
-		<task.spring.version>0.0.1</task.spring.version>	
+
 	</properties>
 
 	<dependencies>
 	
 		<dependency>
 			<groupId>com.hua</groupId>
-			<artifactId>quartz</artifactId>
-			<version>${com.hua.quartz.version}</version>
+			<artifactId>task-core</artifactId>
 		</dependency>
-	
+
+		<!-- 任务调度 -->
 		<dependency>
-			<groupId>com.hua</groupId>
-			<artifactId>task-spring</artifactId>
-			<version>${task.spring.version}</version>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+		</dependency>		
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+		</dependency>
+
+		<!-- spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
 		</dependency>
 
 	</dependencies>

@@ -10,13 +10,13 @@
 	</parent>
 	<groupId>com.hua</groupId>
 	<artifactId>lts-spring-boot</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 	<name>lts-spring-boot</name>
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.version>0.0.1</maven.version>
+		<maven.version>1.0.0</maven.version>
 		<maven.plugin.compiler.version>3.3</maven.plugin.compiler.version>
 		<maven.plugin.source.version>2.4</maven.plugin.source.version>
 		<maven.plugin.surefire.version>2.18.1</maven.plugin.surefire.version>
@@ -24,7 +24,7 @@
 		<maven.plugin.resources.version>2.7</maven.plugin.resources.version>
 		<maven.plugin.dependency.version>2.10</maven.plugin.dependency.version>
 		<maven.plugin.war.version>3.0</maven.plugin.war.version>
-		<task.version>0.0.1</task.version>
+		<task.version>1.0.0</task.version>
 		<lts.version>1.7.0</lts.version>
 		<fastjson>1.2.58</fastjson>
 		<netty.version>4.1.33.Final</netty.version>
@@ -36,7 +36,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.hua</groupId>
-			<artifactId>task</artifactId>
+			<artifactId>task-core</artifactId>
 			<version>${task.version}</version>
 		</dependency>
 
