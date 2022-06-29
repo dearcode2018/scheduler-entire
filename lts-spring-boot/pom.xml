@@ -28,7 +28,7 @@
 		<lts.version>1.7.0</lts.version>
 		<fastjson>1.2.58</fastjson>
 		<netty.version>4.1.33.Final</netty.version>
-		<zookeeper.version>3.4.5</zookeeper.version>
+		<zookeeper.version>3.4.14</zookeeper.version>
 		<leveldbjni.version>1.8</leveldbjni.version>
 		<zkclient.version>0.1</zkclient.version>
 	</properties>
