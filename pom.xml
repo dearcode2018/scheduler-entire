@@ -43,7 +43,7 @@
 		<jackson.version>2.9.8</jackson.version>
 		<fastjson>1.2.56</fastjson>
 		<netty.version>4.1.33.Final</netty.version>
-		<zookeeper.version>3.4.5</zookeeper.version>
+		<zookeeper.version>3.4.14</zookeeper.version>
 		<leveldbjni.version>1.8</leveldbjni.version>
 		<zkclient.version>0.1</zkclient.version>
 		<!-- 任务调度 -->
