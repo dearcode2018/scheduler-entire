@@ -40,7 +40,7 @@
 		<lts.version>1.7.0</lts.version>
 		<common.version>1.0.0</common.version>
 		<scheduler-core.version>1.0.0</scheduler-core.version>
-		<jackson.version>2.9.8</jackson.version>
+		<jackson.version>2.12.6.1</jackson.version>
 		<fastjson>1.2.56</fastjson>
 		<netty.version>4.1.33.Final</netty.version>
 		<zookeeper.version>3.4.5</zookeeper.version>
