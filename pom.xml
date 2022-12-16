@@ -36,7 +36,7 @@
 		<maven.plugin.dependency.version>2.10</maven.plugin.dependency.version>
 		<maven.plugin.war.version>3.0</maven.plugin.war.version>
 		<!-- spring -->
-		<spring.version>5.1.5.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 		<lts.version>1.7.0</lts.version>
 		<common.version>1.0.0</common.version>
 		<scheduler-core.version>1.0.0</scheduler-core.version>
